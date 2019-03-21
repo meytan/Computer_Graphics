@@ -14,7 +14,7 @@ namespace Grafika_Lab2
     {
         
         private System.Drawing.Graphics g;
-        private System.Drawing.Pen pen1 = new System.Drawing.Pen(Color.Blue, 2);
+        private System.Drawing.Pen pen1 = new System.Drawing.Pen(Color.DarkRed, 2);
         private float sx = 300;
         private double r = 100;
         private double r1 = 250;
@@ -36,7 +36,8 @@ namespace Grafika_Lab2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.White);
+            r = 100;
+            g.Clear(Color.Black);
             for (int i = 0; i < 100; i++)
             {
                 g.DrawLine(pen1, sx + (float)(r * Math.Cos(a * i)), sx + (float)(r * Math.Sin(a * i)), sx + (float)(r * Math.Cos(a * (i + 1))), sx + (float)(r * Math.Sin(a * (i + 1))));
@@ -45,7 +46,8 @@ namespace Grafika_Lab2
 
         private void button3_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.White);
+            r = 100;
+            g.Clear(Color.Black);
             for (int i = 0; i < 1000; i++)
             {
                 g.DrawLine(pen1, sx + (float)(r * Math.Cos(a * i)), sx + (float)(r * Math.Sin(a * i)), sx + (float)(r * Math.Cos(a * (i + 1))), sx + (float)(r * Math.Sin(a * (i + 1))));
@@ -55,7 +57,9 @@ namespace Grafika_Lab2
 
         private void button2_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.White);
+            r1 = 250;
+            r2 = 250;
+            g.Clear(Color.Black);
 
             for (int j = 0; j < 4; j++)
             {
@@ -77,7 +81,8 @@ namespace Grafika_Lab2
 
         private void button4_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.White);
+            r = 100;
+            g.Clear(Color.Black);
             for (int i = 0; i < 100; i++)
             {
                 g.DrawLine(pen1, sx + (float)(r * Math.Cos(a * i)), sx + (float)(r * Math.Sin(a * i)), sx + (float)(r * Math.Cos(a * (i + 1))), sx + (float)(r * Math.Sin(a * (i + 1))));
@@ -112,42 +117,49 @@ namespace Grafika_Lab2
 
         private void button5_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.White);
-            Point[] points = new Point[5];
+            g.Clear(Color.Black);
 
-            for (int i = 0; i < 400; i += 10)
+            double j = 1;
+
+            for (int i = 0; i < 2000; i += 8)
             {
-                Point P1 = new Point(270 - i, 140);
-                Point P2 = new Point(300, 170 - i);
-                Point P3 = new Point(270 + i, 200);
-                Point P4 = new Point(240, 170 + i);
-                Point P5 = new Point(270 - i, 140);
-                points[0] = P1;
-                points[1] = P2;
-                points[2] = P3;
-                points[3] = P4;
-                points[4] = P5;
+                
+                Point[] points = {
+                new Point(440 - i, 260 + (int)j ),
+                new Point(540 - (int)j, 360 - i),
+                new Point(440 + i, 460 - (int)j),
+                new Point(340 + (int)j, 360 + i),
+                new Point(440 - i, 260 + (int)j),
+                };
+
+                //j = i*i*i/100 - i*i/10 + i ;
+
+                j = -13 * i * i * i / 2137500 + 197 * i * i / 28500 - 539 * i / 855;
+
                 g.DrawLines(pen1, points);
             }
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
-            g.Clear(Color.White);
-            Point[] points = new Point[5];
+            g.Clear(Color.Black);
+            double j= 0;
 
-            for (int i = 0; i < 400; i += 10)
+            for (int i = 0; i < 800; i += 10)
             {
-                Point P1 = new Point(270 - i, 80);
-                Point P2 = new Point(360, 170 - i);
-                Point P3 = new Point(270 + i, 260);
-                Point P4 = new Point(180, 170 + i);
-                Point P5 = new Point(270 - i, 80);
-                points[0] = P1;
-                points[1] = P2;
-                points[2] = P3;
-                points[3] = P4;
-                points[4] = P5;
+                j =  117 * i / 160 - 13 * i * i / 16000;
+                Point[] points = {
+                new Point(440 - i, 110 - (int)j ),
+                new Point(690 + (int)j, 360 - i),
+                new Point(440 + i, 610 + (int)j),
+                new Point(190 - (int)j, 360 + i),
+                new Point(440 - i, 110 - (int)j)
+                };
+
+                //j = i*i*i/100 - i*i/10 + i ;
+
+                
+
                 g.DrawLines(pen1, points);
             }
         }
@@ -168,9 +180,10 @@ namespace Grafika_Lab2
             // 
             this.pictureBox1.Location = new System.Drawing.Point(38, 25);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(879, 720);
+            this.pictureBox1.Size = new System.Drawing.Size(880, 720);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.BackColor = Color.Black;
             // 
             // button1
             // 
